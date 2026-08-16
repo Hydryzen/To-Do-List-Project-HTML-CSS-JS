@@ -1,12 +1,19 @@
-const task = [
-  {
-    id: 1,
-    day: "monday",
-    text: "Eat breakfast",
-    completed: false,
-    subtasks: "Wash the dishes"
-  },
+const tasks = [
+  { id: 1, day: "Monday", text: "Eat Breakfast", completed: false, subTasks: ["Wash the dishes"] },
+  { id: 2, day: "Monday", text: "Go to Work", completed: false, subTasks: ["Fill files"] },
+  { id: 3, day: "Monday", text: "Eat Lunch", completed: false, subTasks: ["Prepare dessert"] },
+  { id: 4, day: "Monday", text: "Eat Dinner", completed: false, subTasks: ["Eat fruit"] },
+  { id: 5, day: "Tuesday", text: "Eat Breakfast", completed: false, subTasks: ["Wash the dishes"] },
+  { id: 6, day: "Tuesday", text: "Go to Work", completed: false, subTasks: ["Join the meeting"] },
+  { id: 7, day: "Tuesday", text: "Read Books", completed: false, subTasks: ["Study math"] },
+  { id: 8, day: "Tuesday", text: "Do Exercise", completed: false, subTasks: ["Do pull-ups"] }
 ];
+
+function rendertasks() {
+  const mondayList = document.getElementById('Monday-list');
+  const tuesdayList = document.getElementById('Tuesday-list');
+}
+
 
 
 
