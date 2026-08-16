@@ -1,6 +1,57 @@
 /* ---------- IMPORTAR FUENTE ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+/* ---------- VARIABLES DE TEMA ---------- */
+:root {
+  --bg-body: #e8f4f8;
+  --bg-main: #ffffff;
+  --bg-section: #f5fafc;
+  --bg-add: #f0f9fc;
+  --bg-input: #ffffff;
+  --bg-li: #ffffff;
+  --bg-hover-li: #f0f9fc;
+  --bg-button: #00b4cc;
+  --bg-button-hover: #009bb3;
+  --bg-submit: #d4edf2;
+  --bg-submit-hover: #b8dde6;
+  --text-primary: #0a2a3a;
+  --text-secondary: #5a7a8a;
+  --text-li: #1a3a4a;
+  --text-submit: #0a2a3a;
+  --border-color: #d4edf2;
+  --border-input: #cce4ea;
+  --border-li: #e4f0f4;
+  --shadow-main: rgba(0, 180, 200, 0.15);
+  --shadow-button: rgba(0, 180, 204, 0.35);
+  --shadow-submit: rgba(0, 180, 200, 0.2);
+  --checkbox-accent: #00b4cc;
+}
+
+body.dark-theme {
+  --bg-body: #0f0f1a;
+  --bg-main: #1a1a2e;
+  --bg-section: #252542;
+  --bg-add: #1e1e3a;
+  --bg-input: #2a2a4a;
+  --bg-li: #1e1e3a;
+  --bg-hover-li: #2a2a4a;
+  --bg-button: #7c3aed;
+  --bg-button-hover: #6d28d9;
+  --bg-submit: #3b3b5c;
+  --bg-submit-hover: #4c4c72;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0c0;
+  --text-li: #e0e0f0;
+  --text-submit: #ffffff;
+  --border-color: #3b3b5c;
+  --border-input: #3b3b5c;
+  --border-li: #2a2a4a;
+  --shadow-main: rgba(0, 0, 0, 0.5);
+  --shadow-button: rgba(124, 58, 237, 0.4);
+  --shadow-submit: rgba(0, 0, 0, 0.3);
+  --checkbox-accent: #7c3aed;
+}
+
 /* ---------- RESET Y BASE ---------- */
 * {
   margin: 0;
@@ -10,40 +61,70 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #e8f4f8;
+  background: var(--bg-body);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem 1rem;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 main {
   width: 100%;
   max-width: 800px;
-  background: #ffffff;
+  background: var(--bg-main);
   border-radius: 24px;
   padding: 2rem;
-  box-shadow: 0 20px 60px rgba(0, 180, 200, 0.15);
-  border: 1px solid #d4edf2;
+  box-shadow: 0 20px 60px var(--shadow-main);
+  border: 1px solid var(--border-color);
+  transition: background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* ---------- HEADER ---------- */
+.to-do-list-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .to-do-list-wrap h1 {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #0a2a3a;
-  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+  transition: color 0.4s ease;
 }
 
 .to-do-list-wrap h1 span {
-  color: #00b4cc;
+  color: var(--checkbox-accent);
 }
 
 .to-do-list-wrap p {
-  color: #5a7a8a;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin-bottom: 1.8rem;
+  width: 100%;
+  transition: color 0.4s ease;
+}
+
+/* ---------- BOTÓN DARK MODE ---------- */
+#darkmode {
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#darkmode:hover {
+  background: var(--bg-section);
 }
 
 /* ---------- FORMULARIO AGREGAR TAREA ---------- */
@@ -52,51 +133,57 @@ main {
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-bottom: 2rem;
-  background: #f0f9fc;
+  background: var(--bg-add);
   padding: 1.2rem;
   border-radius: 16px;
-  border: 1px solid #d4edf2;
+  border: 1px solid var(--border-color);
+  transition: background 0.4s ease, border 0.4s ease;
 }
 
 .add-task-section input {
   flex: 2;
   min-width: 180px;
   padding: 0.7rem 1rem;
-  border: 1px solid #cce4ea;
+  border: 1px solid var(--border-input);
   border-radius: 10px;
-  background: #ffffff;
-  color: #1a3a4a;
+  background: var(--bg-input);
+  color: var(--text-primary);
   font-size: 1rem;
   outline: none;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition: background 0.4s ease, border 0.3s, box-shadow 0.3s, color 0.4s ease;
 }
 
 .add-task-section input:focus {
-  border-color: #00b4cc;
+  border-color: var(--checkbox-accent);
   box-shadow: 0 0 0 3px rgba(0, 180, 204, 0.2);
 }
 
 .add-task-section input::placeholder {
-  color: #99b8c8;
+  color: var(--text-secondary);
 }
 
 .add-task-section select {
   flex: 1;
   min-width: 120px;
   padding: 0.7rem 1rem;
-  border: 1px solid #cce4ea;
+  border: 1px solid var(--border-input);
   border-radius: 10px;
-  background: #ffffff;
-  color: #1a3a4a;
+  background: var(--bg-input);
+  color: var(--text-primary);
   font-size: 1rem;
   outline: none;
   cursor: pointer;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition: background 0.4s ease, border 0.3s, box-shadow 0.3s, color 0.4s ease;
 }
 
 .add-task-section select:focus {
-  border-color: #00b4cc;
+  border-color: var(--checkbox-accent);
   box-shadow: 0 0 0 3px rgba(0, 180, 204, 0.2);
+}
+
+.add-task-section select option {
+  background: var(--bg-main);
+  color: var(--text-primary);
 }
 
 .add-task-section button {
@@ -104,7 +191,7 @@ main {
   padding: 0.7rem 1.8rem;
   border: none;
   border-radius: 10px;
-  background: #00b4cc;
+  background: var(--bg-button);
   color: #ffffff;
   font-weight: 600;
   font-size: 1rem;
@@ -113,8 +200,8 @@ main {
 }
 
 .add-task-section button:hover {
-  background: #009bb3;
-  box-shadow: 0 4px 12px rgba(0, 180, 204, 0.35);
+  background: var(--bg-button-hover);
+  box-shadow: 0 4px 12px var(--shadow-button);
 }
 
 .add-task-section button:active {
@@ -124,27 +211,29 @@ main {
 /* ---------- DÍAS ---------- */
 .day-1,
 .day-2 {
-  background: #f5fafc;
+  background: var(--bg-section);
   border-radius: 16px;
   padding: 1.2rem 1.5rem;
   margin-bottom: 1.5rem;
-  border: 1px solid #d4edf2;
+  border: 1px solid var(--border-color);
   box-shadow: 0 2px 8px rgba(0, 180, 200, 0.06);
+  transition: background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease;
 }
 
 .day-1 h2,
 .day-2 h2 {
-  color: #0a2a3a;
+  color: var(--text-primary);
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 0.8rem;
-  border-bottom: 2px solid #d4edf2;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.4rem;
+  transition: color 0.4s ease, border 0.4s ease;
 }
 
 .day-1 h2 span,
 .day-2 h2 span {
-  color: #00b4cc;
+  color: var(--checkbox-accent);
 }
 
 /* ---------- TAREAS ---------- */
@@ -156,20 +245,20 @@ main {
 
 .day-1 ul li,
 .day-2 ul li {
-  background: #ffffff;
+  background: var(--bg-li);
   border-radius: 10px;
   padding: 0.6rem 1rem;
   margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  border: 1px solid #e4f0f4;
-  transition: border 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--border-li);
+  transition: background 0.4s ease, border 0.2s, box-shadow 0.2s, color 0.4s ease;
 }
 
 .day-1 ul li:hover,
 .day-2 ul li:hover {
-  border-color: #b0d8e4;
+  border-color: var(--checkbox-accent);
   box-shadow: 0 2px 8px rgba(0, 180, 204, 0.08);
 }
 
@@ -178,9 +267,10 @@ main {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  color: #1a3a4a;
+  color: var(--text-li);
   font-size: 1rem;
   cursor: pointer;
+  transition: color 0.4s ease;
 }
 
 /* ---------- CHECKBOX PERSONALIZADO ---------- */
@@ -188,15 +278,10 @@ main {
 .day-2 ul li input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #00b4cc;
+  accent-color: var(--checkbox-accent);
   cursor: pointer;
   flex-shrink: 0;
-}
-
-.day-1 ul li input[type="checkbox"]:checked + label,
-.day-2 ul li input[type="checkbox"]:checked + label {
-  text-decoration: line-through;
-  color: #99b8c8;
+  transition: accent-color 0.4s ease;
 }
 
 /* ---------- SUBTAREAS ---------- */
@@ -215,14 +300,14 @@ main {
 }
 
 .sub-item li a {
-  color: #5a9aaa;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .sub-item li a:hover {
-  color: #00b4cc;
+  color: var(--checkbox-accent);
   text-decoration: underline;
 }
 
@@ -237,17 +322,17 @@ main {
   padding: 0.7rem 2.5rem;
   border: none;
   border-radius: 12px;
-  background: #d4edf2;
-  color: #0a2a3a;
+  background: var(--bg-submit);
+  color: var(--text-submit);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.1s, box-shadow 0.3s;
+  transition: background 0.3s, transform 0.1s, box-shadow 0.3s, color 0.4s ease;
 }
 
 .bellow .button:hover {
-  background: #b8dde6;
-  box-shadow: 0 4px 12px rgba(0, 180, 200, 0.2);
+  background: var(--bg-submit-hover);
+  box-shadow: 0 4px 12px var(--shadow-submit);
 }
 
 .bellow .button:active {
@@ -258,6 +343,11 @@ main {
 @media (max-width: 600px) {
   main {
     padding: 1.2rem;
+  }
+
+  .to-do-list-wrap {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .add-task-section {
