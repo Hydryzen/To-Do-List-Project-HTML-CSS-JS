@@ -12,30 +12,51 @@ const tasks = [
 function rendertasks() {
   const mondayList = document.getElementById('monday-list');
   const tuesdayList = document.getElementById('tuesday-list');
+
+  mondayList.innerHTML = '';
+  tuesdayList.innerHTML = '';
+
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <label>
+        <input type="checkbox" ${task.completed ? 'checked' : ''}>
+        ${task.text}
+      </label>
+      <ul class="sub-item">
+        ${task.subTasks.map(sub => `<li><a class="sub-link" href="#">${sub}</a></li>`).join('')}
+      </ul>
+    `;
+
+    if (task.day === "Monday") {
+      mondayList.appendChild(li);
+    } else if (task.day === "Tuesday") {
+      tuesdayList.appendChild(li);
+    }
+  }); 
 }
 
 
-
+rendertasks();
 
 const form = document.getElementById('todo-form');
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // prevents page reload
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
+  const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+  const checkedTasks = [];
 
-      const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-      const checkedTasks = [];
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      const label = checkbox.parentElement.textContent.trim();
+      checkedTasks.push(label);
+    }
+  });
 
-      checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-          const label = checkbox.parentElement.textContent.trim();
-          checkedTasks.push(label);
-        }
-      });
-
-      if (checkedTasks.length > 0) {
-        alert('Submitted!\nCompleted tasks:\n- ' + checkedTasks.join('\n- '));
-      } else {
-        alert('Submitted!\nNo tasks were selected.');
-      }
-    });
+  if (checkedTasks.length > 0) {
+    alert('Submitted!\nCompleted tasks:\n- ' + checkedTasks.join('\n- '));
+  } else {
+    alert('Submitted!\nNo tasks were selected.');
+  }
+});
