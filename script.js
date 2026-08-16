@@ -92,3 +92,36 @@ form.addEventListener('submit', function(e) {
     alert('Submitted!\nNo tasks were selected.');
   }
 });
+
+// ---------- DARK MODE ----------
+const darkModeBtn = document.getElementById('darkmode');
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.body.classList.add('dark-theme');
+    if (darkModeBtn) darkModeBtn.textContent = '☀️ Light Mode';
+  } else {
+    document.body.classList.remove('dark-theme');
+    if (darkModeBtn) darkModeBtn.textContent = '🌙 Dark Mode';
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('dark-theme');
+  const newTheme = isDark ? 'dark' : 'light';
+  localStorage.setItem('preferred-theme', newTheme);
+  applyTheme(newTheme);
+}
+
+if (darkModeBtn) {
+  darkModeBtn.addEventListener('click', toggleTheme);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('preferred-theme');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else {
+    applyTheme('light');
+  }
+});
