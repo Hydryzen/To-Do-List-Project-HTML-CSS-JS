@@ -28,6 +28,12 @@ function renderTasks() {
       </ul>
     `;
 
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener('change', function() {
+      task.completed = this.checked;
+      updateProgressBar();
+    });
+
     if (task.day === "Monday") {
       mondayList.appendChild(li);
     } else if (task.day === "Tuesday") {
@@ -60,6 +66,7 @@ function addTask() {
   tasks.push(newTask);
   input.value = '';
   renderTasks();
+  updateProgressBar();
 }
 
 document.getElementById('add-task-btn').addEventListener('click', addTask);
@@ -125,3 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
     applyTheme('light');
   }
 });
+
+// ---------- PROGRESS BAR ----------//
+function updateProgressBar() {
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter(task => task.completed).length;
+  const progressPercentage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+  document.getElementById('progress-bar').style.width = progressPercentage + '%';
+}
+updateProgressBar();
