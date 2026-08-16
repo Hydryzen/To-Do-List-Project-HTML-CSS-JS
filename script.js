@@ -99,10 +99,10 @@ const darkModeBtn = document.getElementById('darkmode');
 function applyTheme(theme) {
   if (theme === 'dark') {
     document.body.classList.add('dark-theme');
-    if (darkModeBtn) darkModeBtn.textContent = '☀️ Light Mode';
+    if (darkModeBtn) darkModeBtn.textContent = 'Light Mode';
   } else {
     document.body.classList.remove('dark-theme');
-    if (darkModeBtn) darkModeBtn.textContent = '🌙 Dark Mode';
+    if (darkModeBtn) darkModeBtn.textContent = 'Dark Mode';
   }
 }
 
