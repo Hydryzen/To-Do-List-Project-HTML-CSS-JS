@@ -10,8 +10,8 @@ const tasks = [
 ];
 
 function rendertasks() {
-  const mondayList = document.getElementById('Monday-list');
-  const tuesdayList = document.getElementById('Tuesday-list');
+  const mondayList = document.getElementById('monday-list');
+  const tuesdayList = document.getElementById('tuesday-list');
 }
 
 
