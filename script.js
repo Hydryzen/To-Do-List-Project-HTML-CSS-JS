@@ -9,7 +9,7 @@ const tasks = [
   { id: 8, day: "Tuesday", text: "Do Exercise", completed: false, subTasks: ["Do pull-ups"] }
 ];
 
-function rendertasks() {
+function renderTasks() {
   const mondayList = document.getElementById('monday-list');
   const tuesdayList = document.getElementById('tuesday-list');
 
@@ -33,12 +33,44 @@ function rendertasks() {
     } else if (task.day === "Tuesday") {
       tuesdayList.appendChild(li);
     }
-  }); 
+  });
 }
 
+renderTasks();
 
-rendertasks();
+function addTask() {
+  const input = document.getElementById('new-task-input');
+  const text = input.value.trim();
+  const daySelect = document.getElementById('day-select');
+  const selectedDay = daySelect.value;
 
+  if (text === '') {
+    alert('Escribe una tarea antes de agregar.');
+    return;
+  }
+
+  const newTask = {
+    id: Date.now(),
+    day: selectedDay,
+    text: text,
+    completed: false,
+    subTasks: []
+  };
+
+  tasks.push(newTask);
+  input.value = '';
+  renderTasks();
+}
+
+document.getElementById('add-task-btn').addEventListener('click', addTask);
+
+document.getElementById('new-task-input').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    addTask();
+  }
+});
+
+// FORMULARIO
 const form = document.getElementById('todo-form');
 
 form.addEventListener('submit', function(e) {
