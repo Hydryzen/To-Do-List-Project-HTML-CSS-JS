@@ -1,4 +1,16 @@
-  const form = document.getElementById('todo-form');
+const task = [
+  {
+    id: 1,
+    day: "monday",
+    text: "Eat breakfast",
+    completed: false,
+    subtasks: "Wash the dishes"
+  },
+];
+
+
+
+const form = document.getElementById('todo-form');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault(); // prevents page reload
